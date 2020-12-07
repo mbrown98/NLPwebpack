@@ -36,4 +36,7 @@ module.exports = {
       protectWebpackAssets: false,
     }),
   ],
+  devServer: {
+    watchContentBase: true,
+  },
 };

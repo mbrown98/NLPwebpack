@@ -1,9 +1,7 @@
-import { checkForName } from "./js/nameChecker";
 import { handleSubmit } from "./js/formHandler";
+import { fetchSentimentAnalysis } from "./js/fetchSentimentAnalysis";
 import "./styles/resets.scss";
 
-console.log(checkForName);
+console.log("CHANGE!! sssshis");
 
-console.log("CHANGE!! this");
-
-export { checkForName, handleSubmit };
+export { fetchSentimentAnalysis, handleSubmit };

@@ -1,15 +1,23 @@
 var path = require("path");
 const dotenv = require("dotenv");
+var cors = require("cors");
 const express = require("express");
-const mockAPIResponse = require("./mockAPI.js");
+const axios = require("axios");
+const bodyParser = require("body-parser");
+
+// const mockAPIResponse = require("./mockAPI.js");
 
 dotenv.config();
 
 console.log(`Your API key is ${process.env.API_KEY}`);
 const app = express();
 
+app.use(cors());
+
 app.use(express.static("dist"));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 console.log(__dirname);
 
 app.get("/", function (req, res) {
@@ -22,6 +30,13 @@ app.listen(8081, function () {
   console.log("Example app listening on port 8081!");
 });
 
-app.get("/test", function (req, res) {
-  res.send(mockAPIResponse);
+app.post("/analysis", async (req, res) => {
+  const text = req.body.text;
+  console.log("tex", text);
+
+  const analysis = await axios.get(
+    `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&lang=en&txt=${text}`
+  );
+
+  res.send({ data: analysis.data });
 });
