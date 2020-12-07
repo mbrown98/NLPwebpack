@@ -4,5 +4,6 @@ import "./styles/resets.scss";
 
 console.log(checkForName);
 
-alert("I EXIST");
-console.log("CHANGE!!");
+console.log("CHANGE!! this");
+
+export { checkForName, handleSubmit };
