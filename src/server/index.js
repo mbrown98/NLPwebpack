@@ -1,11 +1,9 @@
-var path = require("path");
+const path = require("path");
 const dotenv = require("dotenv");
-var cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 const axios = require("axios");
 const bodyParser = require("body-parser");
-
-// const mockAPIResponse = require("./mockAPI.js");
 
 dotenv.config();
 
@@ -24,7 +22,6 @@ app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
 
-// designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
   console.log("Example app listening on port 8081!");
 });
